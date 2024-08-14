@@ -3,7 +3,6 @@ using UnityEngine;
 public class Door : MonoBehaviour, IInteractables
 {
     [SerializeField] GameObject doorAnimator;
-    [SerializeField] Collider collider;
     bool isOpened = false;
     public void Interact()
     {
