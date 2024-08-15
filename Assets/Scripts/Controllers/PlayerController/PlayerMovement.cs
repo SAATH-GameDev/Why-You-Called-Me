@@ -19,12 +19,19 @@ public class PlayerMovement : MonoBehaviour
     public float bobbingYLength = 0.5f;
     public float bobbingYRate = 0.5f;
 
+    [Space]
+    public AudioClip walkStep;
+    public float walkStepDelay = 0.5f;
+
     Vector3 velocity;
     bool isGrounded;
     float currentSpeed;
+
     float bobbingYTimer = 0.0f;
     Transform camTransform;
     Vector3 camBasePosition;
+
+    float walkStepTimer = 0.0f;
 
     private void Start()
     {
@@ -33,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
         camBasePosition = camTransform.localPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -49,7 +55,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * walkSpeed * Time.deltaTime);
-        bobbingYTimer += bobbingYRate * move.sqrMagnitude * walkSpeed * Time.deltaTime;
+
+        float movementProduct = move.sqrMagnitude * walkSpeed * Time.deltaTime;
+        bobbingYTimer += bobbingYRate * movementProduct;
+        walkStepTimer -= movementProduct;
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -63,12 +72,23 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftShift))
         {
             controller.Move(move * sprintSpeed * Time.deltaTime);
-            bobbingYTimer += bobbingYRate * move.sqrMagnitude * sprintSpeed * Time.deltaTime;
+
+            movementProduct = move.sqrMagnitude * sprintSpeed * Time.deltaTime;
+            bobbingYTimer += bobbingYRate * movementProduct;
+            walkStepTimer -= movementProduct;
         }
+
+        ////
 
         if(bobbingYTimer > 1.0f)
             bobbingYTimer -= 1.0f;
 
         camTransform.localPosition = camBasePosition + (Vector3.up * bobbingYCurve.Evaluate(bobbingYTimer) * bobbingYLength);
+
+        if(walkStepTimer <= 0.0f)
+        {
+            GetComponent<AudioSource>().PlayOneShot(walkStep);
+            walkStepTimer += walkStepDelay;
+        }
     }
 }

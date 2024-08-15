@@ -2855,6 +2855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4934341110703839439, guid: c30528114af6b2645b368419ed44360f, type: 3}
+      propertyPath: walkStepDelay
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8239601867243710512, guid: c30528114af6b2645b368419ed44360f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 96.8
