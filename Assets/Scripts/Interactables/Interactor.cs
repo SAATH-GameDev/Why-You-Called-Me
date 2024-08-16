@@ -3,7 +3,7 @@ using UnityEngine;
 public class Interactor : MonoBehaviour, IInteractables
 {
     public Transform InteractorSource;
-    public float InteractRange;
+    public float InteractRange = 3;
 
     public void Interact()
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Troch : MonoBehaviour, IInteractables
+public class Torch : MonoBehaviour, IInteractables
 {
     public Vector3 player ;
 
