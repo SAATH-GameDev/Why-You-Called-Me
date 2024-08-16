@@ -1,25 +1,21 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Interactor : MonoBehaviour, IInteractables
+public class Interactor : MonoBehaviour
 {
-    public Transform InteractorSource;
-    public float InteractRange = 3;
+    public Transform cameraTransform;
+    public float range = 3;
 
-    public void Interact()
+    public void Interact(InputAction.CallbackContext context)
     {
-        
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
+        if(context.performed)
         {
-            Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
-            if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
+            Ray r = new Ray(cameraTransform.position, cameraTransform.forward);
+            if (Physics.Raycast(r, out RaycastHit info, range))
             {
-                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractables interactObj))
+                if (info.collider.gameObject.TryGetComponent(out IInteractables obj))
                 {
-                    interactObj.Interact();
+                    obj.Interact();
                 }
             }
         }

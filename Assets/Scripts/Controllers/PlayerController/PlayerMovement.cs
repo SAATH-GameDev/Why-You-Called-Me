@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,9 +24,11 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip walkStep;
     public float walkStepDelay = 0.5f;
 
+    Vector2 movementInput;
     Vector3 velocity;
     bool isGrounded;
     float currentSpeed;
+    bool sprint;
 
     float bobbingYTimer = 0.0f;
     Transform camTransform;
@@ -45,14 +48,9 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
-        {
             velocity.y = -2f;
-        }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = transform.right * movementInput.x + transform.forward * movementInput.y;
 
         controller.Move(move * walkSpeed * Time.deltaTime);
 
@@ -60,16 +58,10 @@ public class PlayerMovement : MonoBehaviour
         bobbingYTimer += bobbingYRate * movementProduct;
         walkStepTimer -= movementProduct;
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
         velocity.y += gravity * Time.deltaTime;
-
         controller.Move(velocity * Time.deltaTime);
 
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(sprint)
         {
             controller.Move(move * sprintSpeed * Time.deltaTime);
 
@@ -90,5 +82,21 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<AudioSource>().PlayOneShot(walkStep);
             walkStepTimer += walkStepDelay;
         }
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        movementInput = context.ReadValue<Vector2>();
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if(context.performed && isGrounded)
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+    public void Sprint(InputAction.CallbackContext context)
+    {
+        sprint = context.ReadValue<float>() > 0.0f ? true : false;
     }
 }
