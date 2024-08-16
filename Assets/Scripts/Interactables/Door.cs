@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractables
 {
-    [SerializeField] GameObject doorAnimator;
     bool isOpened = false;
+    Animator animator;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void Interact()
     {
         isOpened = !isOpened;
-        doorAnimator.GetComponent<Animator>().Play("DoorOpen");
-        doorAnimator.GetComponent<Animator>().speed = isOpened ? 1 : -1;
-        //collider.enabled = !isOpened;
+        transform.position += transform.up * (isOpened ? 3.0f : -3.0f);
+        
+        //animator.Play("DoorOpen");
+        //animator.speed = isOpened ? 1 : -1;
     }
 }
