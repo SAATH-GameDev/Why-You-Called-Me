@@ -13,7 +13,7 @@ public class Door : MonoBehaviour, IInteractables
     public void Interact()
     {
         isOpened = !isOpened;
-        transform.position += transform.up * (isOpened ? 3.0f : -3.0f);
+        transform.position += transform.forward * (isOpened ? 0f : 0f);
         
         animator.Play("DoorOpen");
         //animator.speed = isOpened ? 1 : -1;
