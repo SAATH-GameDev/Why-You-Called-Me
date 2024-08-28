@@ -7,11 +7,17 @@ public class Interactor : MonoBehaviour
     public Transform cameraTransform;
     public float range = 3;
     public float startOffset = 0.25f;
-    public Text interactMessage;  
+    public Text interactMessage;
+    private Inventory inventory;
+
+    void Start()
+    {
+        inventory = GetComponent<Inventory>();
+    }
 
     void Update()
     {
-        CheckForInteractable(); 
+        CheckForInteractable();
     }
 
     void CheckForInteractable()
@@ -19,10 +25,25 @@ public class Interactor : MonoBehaviour
         Ray r = new Ray(cameraTransform.position + (cameraTransform.forward * startOffset), cameraTransform.forward);
         if (Physics.Raycast(r, out RaycastHit info, range))
         {
-            if (info.collider.gameObject.TryGetComponent(out IInteractables obj))
+            if (info.collider.gameObject.TryGetComponent(out ICollectible collectible))
+            {
+                interactMessage.text = "Press E to pick up";
+                interactMessage.enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    collectible.Collect();
+                }
+            }
+            else if (info.collider.gameObject.TryGetComponent(out IInteractables interactObj))
             {
                 interactMessage.text = "Press E to interact";
                 interactMessage.enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    interactObj.Interact();
+                }
             }
             else
             {
@@ -31,23 +52,7 @@ public class Interactor : MonoBehaviour
         }
         else
         {
-            interactMessage.enabled = false; 
-        }
-    }
-
-
-    public void Interact(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Ray r = new Ray(cameraTransform.position + (cameraTransform.forward * startOffset), cameraTransform.forward);
-            if (Physics.Raycast(r, out RaycastHit info, range))
-            {
-                if (info.collider.gameObject.TryGetComponent(out IInteractables obj))
-                {        
-                    obj.Interact();
-                }
-            }
+            interactMessage.enabled = false;
         }
     }
 }

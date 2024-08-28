@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class Door : MonoBehaviour, IInteractables
+public class Door : MonoBehaviour, IUnlockables, IInteractables
 {
-    public bool isDoorLocked = false;
+    public bool isLocked = true;
     bool isOpened = false;
     Animator animator;
     public Text uiText;
@@ -22,31 +22,48 @@ public class Door : MonoBehaviour, IInteractables
 
     public void Interact()
     {
-        if (isDoorLocked)
+        Inventory inventory = FindObjectOfType<Inventory>();
+        if (isLocked)
         {
-            
-            if (uiText != null)
+            if (inventory != null && inventory.HasItem<Key>())
             {
-                uiText.text = doorLockedMessage;
-                StartCoroutine(ClearMassageAfterDelay());
+                Unlock();
+                isOpened = !isOpened;
+                animator.Play("DoorOpen");
+            }
+            else
+            {
+                ShowLockedMessage();
             }
         }
         else
         {
             isOpened = !isOpened;
-
             animator.Play("DoorOpen");
-
-            if (uiText != null)
-            {
-                StartCoroutine(ClearMassageAfterDelay());
-            }
         }
     }
 
-    private IEnumerator ClearMassageAfterDelay()
+    private void ShowLockedMessage()
+    {
+        if (uiText != null)
+        {
+            uiText.text = doorLockedMessage;
+            StartCoroutine(ClearMessageAfterDelay());
+        }
+    }
+
+    private IEnumerator ClearMessageAfterDelay()
     {
         yield return new WaitForSeconds(messageClearDelay);
         uiText.text = "";
     }
+
+    public void Unlock()
+    {
+        isLocked = false;
+        Debug.Log("Door unlocked!");
+    }
+
+    public bool IsLocked => isLocked;
 }
+
