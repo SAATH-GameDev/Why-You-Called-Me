@@ -5,7 +5,6 @@ public class Tv : MonoBehaviour, IInteractables
     public AudioClip tvStatic;
     public void Interact()
     {
-        Debug.Log("interacted");
         GetComponent<AudioSource>().PlayOneShot(tvStatic);
     }
 

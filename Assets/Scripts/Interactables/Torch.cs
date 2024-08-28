@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class Torch : MonoBehaviour, IInteractables
 {
-    public Vector3 player ;
-
+    public GameObject FlashLight;
     public void Interact()
     {
-        Debug.Log("interacted");
-        transform.position =  player;
+        Destroy(gameObject);
+        FlashLight.SetActive(true);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
