@@ -44,7 +44,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 20
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1156712a59703844876f861a5c0a54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FashLightl: {fileID: 0}
+  FlashLight: {fileID: 0}
 --- !u!4 &5607862742270325073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c97feba466dbaa547b73addca4239031, type: 3}
