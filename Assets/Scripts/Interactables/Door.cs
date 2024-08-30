@@ -5,10 +5,10 @@ using System.Collections;
 public class Door : MonoBehaviour, IUnlockables, IInteractables
 {
     public bool isLocked = true;
-    bool isOpened = false;
-    Animator animator;
+    private bool isOpened = false;
+    private Animator animator;
     public Text uiText;
-    string doorLockedMessage = "Need Key To Unlock";
+    private string doorLockedMessage = "Need Key To Unlock";
     public float messageClearDelay = 2.0f;
 
     void Start()
@@ -23,13 +23,13 @@ public class Door : MonoBehaviour, IUnlockables, IInteractables
     public void Interact()
     {
         Inventory inventory = FindObjectOfType<Inventory>();
+
         if (isLocked)
         {
             if (inventory != null && inventory.HasItem<Key>())
             {
                 Unlock();
-                isOpened = !isOpened;
-                animator.Play("DoorOpen");
+                ToggleDoor();
             }
             else
             {
@@ -38,8 +38,21 @@ public class Door : MonoBehaviour, IUnlockables, IInteractables
         }
         else
         {
-            isOpened = !isOpened;
+            ToggleDoor();
+        }
+    }
+
+    private void ToggleDoor()
+    {
+        isOpened = !isOpened;
+
+        if (isOpened)
+        {
             animator.Play("DoorOpen");
+        }
+        else
+        {
+            animator.Play("DoorClose");
         }
     }
 
@@ -66,4 +79,3 @@ public class Door : MonoBehaviour, IUnlockables, IInteractables
 
     public bool IsLocked => isLocked;
 }
-
