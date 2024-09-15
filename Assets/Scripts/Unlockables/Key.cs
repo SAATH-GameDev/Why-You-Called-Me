@@ -1,9 +1,12 @@
 using UnityEngine;
 using System.Collections;
+
 public class Key : MonoBehaviour, ICollectible
 {
     public Light[] lightsToDisable;
     public float disableDuration = 5f;
+    public GameObject darkAreaTrigger; 
+    public float DarkAreaTriggerEnableDuration = 5f; 
 
     public void Collect()
     {
@@ -14,6 +17,7 @@ public class Key : MonoBehaviour, ICollectible
             gameObject.SetActive(false);
 
             DisableLightsForTime();
+            StartCoroutine(EnableDarkAreaTriggerForTime());
         }
     }
 
@@ -51,5 +55,14 @@ public class Key : MonoBehaviour, ICollectible
             light.enabled = true;
         }
     }
-}
 
+    private IEnumerator EnableDarkAreaTriggerForTime()
+    {
+        if (darkAreaTrigger != null)
+        {
+            darkAreaTrigger.SetActive(true);
+            yield return new WaitForSeconds(DarkAreaTriggerEnableDuration);
+            darkAreaTrigger.SetActive(false);
+        }
+    }
+}
