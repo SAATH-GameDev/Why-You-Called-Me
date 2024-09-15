@@ -5,14 +5,17 @@ public class GhostAI : MonoBehaviour
 {
     public float roamRadius = 20f;
     public float roamTimer = 10f;
+    public AudioClip screamSound;
     private Transform target;
     private NavMeshAgent agent;
     private float timer;
+    private AudioSource audioSource;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         timer = roamTimer;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -36,5 +39,13 @@ public class GhostAI : MonoBehaviour
         NavMesh.SamplePosition(randomDirection, out navHit, distance, layermask);
 
         return navHit.position;
+    }
+
+    public void Scream()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(screamSound);
+        }
     }
 }
