@@ -1,7 +1,10 @@
 using UnityEngine;
-
+using System.Collections;
 public class Key : MonoBehaviour, ICollectible
 {
+    public Light[] lightsToDisable;
+    public float disableDuration = 5f;
+
     public void Collect()
     {
         Inventory inventory = FindObjectOfType<Inventory>();
@@ -9,6 +12,8 @@ public class Key : MonoBehaviour, ICollectible
         {
             inventory.AddItem(this);
             gameObject.SetActive(false);
+
+            DisableLightsForTime();
         }
     }
 
@@ -20,7 +25,31 @@ public class Key : MonoBehaviour, ICollectible
         }
         else
         {
-            Debug.Log("Alredy Unlocked");
+            Debug.Log("Already Unlocked");
+        }
+    }
+
+    private void DisableLightsForTime()
+    {
+        if (lightsToDisable.Length > 0)
+        {
+            foreach (Light light in lightsToDisable)
+            {
+                light.enabled = false;
+            }
+
+            StartCoroutine(ReEnableLights());
+        }
+    }
+
+    private IEnumerator ReEnableLights()
+    {
+        yield return new WaitForSeconds(disableDuration);
+
+        foreach (Light light in lightsToDisable)
+        {
+            light.enabled = true;
         }
     }
 }
+
