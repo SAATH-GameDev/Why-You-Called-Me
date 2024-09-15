@@ -6984,7 +6984,7 @@ GameObject:
   - component: {fileID: 1988696944}
   - component: {fileID: 1988696949}
   m_Layer: 0
-  m_Name: DarkAreaTrigger (2)
+  m_Name: DarkAreaTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7681,6 +7681,8 @@ MonoBehaviour:
   - {fileID: 328190323}
   - {fileID: 744290769}
   disableDuration: 10
+  darkAreaTrigger: {fileID: 1988696943}
+  DarkAreaTriggerEnableDuration: 5
 --- !u!1 &2147175859 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ca1bfb546d03f0542bba4283439c2f9f, type: 3}
