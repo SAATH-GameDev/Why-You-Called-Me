@@ -12,7 +12,7 @@ public class PlayerStatus : MonoBehaviour
     public float maxVignetteIntensity = 0.5f;
     public float maxHeartbeatPitch = 1.5f;
     public float maxBreathingPitch = 1.5f;
-    public float claustrophobiaDuration = 4.0f;  // Reduced duration to 4 seconds
+    public float claustrophobiaDuration = 8.0f;
     private float claustrophobiaTimer;
     private bool inDarkArea;
 
@@ -81,7 +81,7 @@ public class PlayerStatus : MonoBehaviour
     private IEnumerator RestartGame()
     {
         Debug.Log("Restarting game...");
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(8.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

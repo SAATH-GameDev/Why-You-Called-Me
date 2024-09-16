@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
-
     public float walkSpeed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
@@ -70,8 +69,6 @@ public class PlayerMovement : MonoBehaviour
             walkStepTimer -= movementProduct;
         }
 
-        ////
-
         if(bobbingYTimer > 1.0f)
             bobbingYTimer -= 1.0f;
 
@@ -82,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<AudioSource>().PlayOneShot(walkStep);
             walkStepTimer += walkStepDelay;
         }
+
+        CheckGhostInView();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -98,5 +97,20 @@ public class PlayerMovement : MonoBehaviour
     public void Sprint(InputAction.CallbackContext context)
     {
         sprint = context.ReadValue<float>() > 0.0f ? true : false;
+    }
+
+    private void CheckGhostInView()
+    {
+        Ray ray = new Ray(camTransform.position, camTransform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            GhostAI ghost = hit.transform.GetComponent<GhostAI>();
+            if (ghost != null)
+            {
+                ghost.Scream();
+            }
+        }
     }
 }
