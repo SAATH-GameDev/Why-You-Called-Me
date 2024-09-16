@@ -81,7 +81,7 @@ public class PlayerStatus : MonoBehaviour
     private IEnumerator RestartGame()
     {
         Debug.Log("Restarting game...");
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(8.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

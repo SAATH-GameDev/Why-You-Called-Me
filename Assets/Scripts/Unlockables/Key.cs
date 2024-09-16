@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -6,7 +7,15 @@ public class Key : MonoBehaviour, ICollectible
     public Light[] lightsToDisable;
     public float disableDuration = 5f;
     public GameObject darkAreaTrigger; 
-    public float DarkAreaTriggerEnableDuration = 5f; 
+    public float DarkAreaTriggerEnableDuration = 5f;
+
+    public MeshRenderer msh;
+
+
+    private void Start()
+    {
+        msh.GetComponent<MeshRenderer>();
+    }
 
     public void Collect()
     {
@@ -14,8 +23,8 @@ public class Key : MonoBehaviour, ICollectible
         if (inventory != null)
         {
             inventory.AddItem(this);
-            gameObject.SetActive(false);
-
+           // gameObject.SetActive(false);
+           msh.enabled = false;
             DisableLightsForTime();
             StartCoroutine(EnableDarkAreaTriggerForTime());
         }

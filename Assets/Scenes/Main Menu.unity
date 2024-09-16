@@ -472,7 +472,6 @@ GameObject:
   - component: {fileID: 429518844}
   - component: {fileID: 429518843}
   - component: {fileID: 429518846}
-  - component: {fileID: 429518847}
   m_Layer: 0
   m_Name: Main Menu
   m_TagString: Untagged
@@ -586,18 +585,6 @@ MonoBehaviour:
   SettingsMenu: {fileID: 1762868519}
   Back: {fileID: 1027172175}
   QuitBtn: {fileID: 723556586}
---- !u!114 &429518847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429518841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5527a44bb9d73643ada94542adcdf05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &490023124
 GameObject:
   m_ObjectHideFlags: 0
