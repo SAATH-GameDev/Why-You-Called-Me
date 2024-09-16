@@ -5,7 +5,7 @@ using System.Collections;
 public class Key : MonoBehaviour, ICollectible
 {
     public Light[] lightsToDisable;
-    public float disableDuration = 5f;
+    public float lightsDisableDuration = 5f;
     public GameObject darkAreaTrigger; 
     public float DarkAreaTriggerEnableDuration = 5f;
 
@@ -57,7 +57,7 @@ public class Key : MonoBehaviour, ICollectible
 
     private IEnumerator ReEnableLights()
     {
-        yield return new WaitForSeconds(disableDuration);
+        yield return new WaitForSeconds(lightsDisableDuration);
 
         foreach (Light light in lightsToDisable)
         {

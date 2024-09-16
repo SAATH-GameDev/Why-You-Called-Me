@@ -12,7 +12,7 @@ public class PlayerStatus : MonoBehaviour
     public float maxVignetteIntensity = 0.5f;
     public float maxHeartbeatPitch = 1.5f;
     public float maxBreathingPitch = 1.5f;
-    public float claustrophobiaDuration = 4.0f;
+    public float claustrophobiaDuration = 8.0f;
     private float claustrophobiaTimer;
     private bool inDarkArea;
 

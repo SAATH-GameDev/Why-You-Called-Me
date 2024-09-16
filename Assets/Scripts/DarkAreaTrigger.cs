@@ -6,7 +6,7 @@ public class DarkAreaTrigger : MonoBehaviour
 
     void Start()
     {
-        playerStatus = FindObjectOfType<PlayerStatus>();  // Make sure this is finding the PlayerStatus script
+        playerStatus = FindObjectOfType<PlayerStatus>();
         if (playerStatus == null)
         {
             Debug.LogError("PlayerStatus script not found!");
@@ -17,7 +17,7 @@ public class DarkAreaTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered dark area"); // Add this line to verify trigger detection
+            Debug.Log("Player entered dark area");
             playerStatus.StartClaustrophobia();
         }
     }
@@ -26,7 +26,7 @@ public class DarkAreaTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player exited dark area"); // Add this line to verify trigger detection
+            Debug.Log("Player exited dark area");
             playerStatus.StopClaustrophobia();
         }
     }
