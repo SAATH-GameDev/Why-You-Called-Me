@@ -4,8 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class GamePlayCanvasManager : MonoBehaviour
 {
+    public static GamePlayCanvasManager instance;
+    
     [Header("Pause Menu Panel......")]
     [SerializeField] private GameObject PauseMenuPanel;
+    [SerializeField] public GameObject GameOverPanel;
 
     [Header("Pause Menu Buttons.......")]
     [SerializeField] private Button NewGameBtn;
@@ -18,6 +21,8 @@ public class GamePlayCanvasManager : MonoBehaviour
     void Start()
     {
 
+        instance = this;
+        
         PauseMenuPanel.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
      
