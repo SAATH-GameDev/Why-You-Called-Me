@@ -16,6 +16,12 @@ public class GamePlayCanvasManager : MonoBehaviour
     [SerializeField] private Button ResumeBtn;
     [SerializeField] private Button SettingsBtn;
 
+    [Header("Pause Menu Buttons.......")] [SerializeField]
+    private Button NewGameBtn2;
+   [SerializeField] private Button exitBtn;
+    
+    
+    
     private bool isPaused = false;
 
     void Start()
@@ -24,10 +30,13 @@ public class GamePlayCanvasManager : MonoBehaviour
         instance = this;
         
         PauseMenuPanel.SetActive(false);
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Locked;
      
         NewGameBtn.onClick.AddListener(RestartGame);
+        NewGameBtn2.onClick.AddListener(RestartGame);
         QuitBtn.onClick.AddListener(QuitGame);
+        exitBtn.onClick.AddListener(QuitGame);
         ResumeBtn.onClick.AddListener(ResumeGame);
         SettingsBtn.onClick.AddListener(OpenSettings);
 
@@ -75,14 +84,14 @@ public class GamePlayCanvasManager : MonoBehaviour
   
     public void RestartGame()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
       public void QuitGame()
     {
-        Time.timeScale = 1f; 
         SceneManager.LoadScene("Main Menu"); 
+        Time.timeScale = 1f; 
        
     }
 

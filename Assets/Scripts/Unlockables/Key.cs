@@ -24,7 +24,7 @@ public class Key : MonoBehaviour, ICollectible
         {
             inventory.AddItem(this);
            // gameObject.SetActive(false);
-           msh.enabled = false;
+             msh.enabled = false;
             DisableLightsForTime();
             StartCoroutine(EnableDarkAreaTriggerForTime());
         }

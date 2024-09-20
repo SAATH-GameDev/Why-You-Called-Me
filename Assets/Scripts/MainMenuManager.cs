@@ -18,7 +18,10 @@ public class MainMenuManager : MonoBehaviour
     
     void Start()
     {
-       
+      ///  Cursor.visible = true;
+       /// Cursor.lockState = CursorLockMode.Locked;
+        
+        
         StartBtn.onClick.AddListener(OnStartClicked);
         SettingsMenu.onClick.AddListener(OpenSettingsPanel);
         Back.onClick.AddListener(BackToMainMenu);

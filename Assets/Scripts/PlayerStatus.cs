@@ -81,7 +81,9 @@ public class PlayerStatus : MonoBehaviour
     private IEnumerator RestartGame()
     {
         Debug.Log("Restarting game...");
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
+      //  Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
         GamePlayCanvasManager.instance.GameOverPanel.SetActive(true);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
