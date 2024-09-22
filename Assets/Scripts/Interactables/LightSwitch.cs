@@ -9,7 +9,7 @@ public class LightSwitch : MonoBehaviour, IInteractables
     {
         if (controlledLight != null)
         {
-            controlledLight.enabled = isOn;  // Ensure the light starts in the correct state
+            controlledLight.enabled = isOn;
         }
     }
 
@@ -17,8 +17,8 @@ public class LightSwitch : MonoBehaviour, IInteractables
     {
         if (controlledLight != null)
         {
-            isOn = !isOn;  // Toggle the light state
-            controlledLight.enabled = isOn;  // Enable or disable the light
+            isOn = !isOn;
+            controlledLight.enabled = isOn;
             Debug.Log($"Light turned {(isOn ? "On" : "Off")}");
         }
     }

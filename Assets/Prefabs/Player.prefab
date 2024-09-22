@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 5311007299464156297}
   - component: {fileID: 4112981693780435912}
   - component: {fileID: 1156437117722809644}
+  - component: {fileID: 8486641699571758656}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -715,6 +716,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3343eb148278fb4789c7ef8e588843b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8486641699571758656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479363852653906852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f74637b779b26d4d8aa7819a19d3408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenVignette: {fileID: 0}
+  heartbeatAudio: {fileID: 3022749467210055373}
+  breathingAudio: {fileID: 2531572498421082296}
+  warningMessage: {fileID: 0}
+  maxVignetteIntensity: 0.5
+  maxHeartbeatPitch: 1.5
+  maxBreathingPitch: 1.5
+  claustrophobiaDuration: 8
 --- !u!1 &6615994983783300613
 GameObject:
   m_ObjectHideFlags: 0

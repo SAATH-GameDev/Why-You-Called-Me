@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f0674915e0124984e968b3b52351cd4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4155463
+      value: -1.683
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f0674915e0124984e968b3b52351cd4b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -102,3 +102,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bceadffdf424094795987df6fda8c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightsToDisable:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  lightsDisableDuration: 5
+  darkAreaTrigger: {fileID: 0}
+  DarkAreaTriggerEnableDuration: 5
+  msh: {fileID: 8998412954366043820}
+--- !u!23 &8998412954366043820 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: f0674915e0124984e968b3b52351cd4b, type: 3}
+  m_PrefabInstance: {fileID: 7719553807991994920}
+  m_PrefabAsset: {fileID: 0}

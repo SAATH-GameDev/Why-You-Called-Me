@@ -88,7 +88,7 @@ public class GamePlayCanvasManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-      public void QuitGame()
+    public void QuitGame()
     {
         SceneManager.LoadScene("Main Menu"); 
         Time.timeScale = 1f; 

@@ -50,6 +50,12 @@ public class PlayerStatus : MonoBehaviour
         breathingAudio.Stop();
         warningMessage.enabled = false;
         inDarkArea = false;
+        Debug.Log("inDarkArea flag set to false");
+    }
+
+    public bool IsInDarkArea()
+    {
+        return inDarkArea;
     }
 
     void Update()
@@ -69,6 +75,10 @@ public class PlayerStatus : MonoBehaviour
                 Debug.Log("Player should die now");
                 Die();
             }
+        }
+        else
+        {
+            Debug.Log("Player is not in dark area, claustrophobia effect should not be active");
         }
     }
 
