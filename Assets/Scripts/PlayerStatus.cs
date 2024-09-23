@@ -12,23 +12,29 @@ public class PlayerStatus : MonoBehaviour
     public float maxVignetteIntensity = 0.5f;
     public float maxHeartbeatPitch = 1.5f;
     public float maxBreathingPitch = 1.5f;
-    public float claustrophobiaDuration = 8.0f;
+    public float claustrophobiaDuration = 20.0f;
     private float claustrophobiaTimer;
     private bool inDarkArea;
+    private bool claustrophobiaActive;
 
+    // Start claustrophobia effect
     public void StartClaustrophobia()
     {
-        Debug.Log("Claustrophobia started");
-        heartbeatAudio.Play();
-        breathingAudio.Play();
-        warningMessage.enabled = true;
-        inDarkArea = true;
-        claustrophobiaTimer = claustrophobiaDuration;
+        if (!claustrophobiaActive) // Prevent restarting if already active
+        {
+            Debug.Log("Claustrophobia started");
+            heartbeatAudio.Play();
+            breathingAudio.Play();
+            warningMessage.enabled = true;
+            inDarkArea = true;
+            claustrophobiaActive = true;
+            claustrophobiaTimer = claustrophobiaDuration;
+        }
     }
 
+    // Update claustrophobia effect over time
     public void UpdateClaustrophobia(float intensity)
     {
-        Debug.Log($"Updating Claustrophobia: Intensity {intensity}, Timer: {claustrophobiaTimer}");
         var color = screenVignette.color;
         color.a = Mathf.Lerp(0, maxVignetteIntensity, intensity);
         screenVignette.color = color;
@@ -39,9 +45,14 @@ public class PlayerStatus : MonoBehaviour
         warningMessage.color = new Color(1, 0, 0, intensity);
     }
 
+    // Stop claustrophobia effect and reset timer
     public void StopClaustrophobia()
     {
         Debug.Log("Claustrophobia stopped");
+        inDarkArea = false;
+        claustrophobiaActive = false;  // Stop the effect
+        claustrophobiaTimer = claustrophobiaDuration; // Reset the timer
+
         var color = screenVignette.color;
         color.a = 0;
         screenVignette.color = color;
@@ -49,8 +60,8 @@ public class PlayerStatus : MonoBehaviour
         heartbeatAudio.Stop();
         breathingAudio.Stop();
         warningMessage.enabled = false;
-        inDarkArea = false;
-        Debug.Log("inDarkArea flag set to false");
+
+        Debug.Log("Claustrophobia effect fully stopped");
     }
 
     public bool IsInDarkArea()
@@ -60,25 +71,18 @@ public class PlayerStatus : MonoBehaviour
 
     void Update()
     {
-        if (inDarkArea)
+        if (claustrophobiaActive && inDarkArea)
         {
-            Debug.Log($"Claustrophobia Timer Before: {claustrophobiaTimer}");
             claustrophobiaTimer -= Time.deltaTime;
 
             float intensity = 1 - (claustrophobiaTimer / claustrophobiaDuration);
             UpdateClaustrophobia(intensity);
 
-            Debug.Log($"Claustrophobia Timer After: {claustrophobiaTimer}");
-
-            if (claustrophobiaTimer <= 0)
+            if (claustrophobiaTimer <= 0 && inDarkArea)
             {
-                Debug.Log("Player should die now");
+                Debug.Log("Player still in dark area, executing death");
                 Die();
             }
-        }
-        else
-        {
-            Debug.Log("Player is not in dark area, claustrophobia effect should not be active");
         }
     }
 
@@ -90,7 +94,6 @@ public class PlayerStatus : MonoBehaviour
 
     private IEnumerator RestartGame()
     {
-        Debug.Log("Restarting game...");
         yield return new WaitForSeconds(1.0f);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
