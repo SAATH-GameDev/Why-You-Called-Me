@@ -45,15 +45,9 @@ public class Door : MonoBehaviour, IUnlockables, IInteractables
     private void ToggleDoor()
     {
         isOpened = !isOpened;
-
-        if (isOpened)
-        {
-            animator.Play("DoorOpen");
-        }
-        else
-        {
-            animator.Play("DoorClose");
-        }
+        if(!animator)
+            return;
+        animator.Play(isOpened ? "DoorOpen" : "DoorClose");
     }
 
     private void ShowLockedMessage()
@@ -74,7 +68,6 @@ public class Door : MonoBehaviour, IUnlockables, IInteractables
     public void Unlock()
     {
         isLocked = false;
-        Debug.Log("Door unlocked!");
     }
 
     public bool IsLocked => isLocked;

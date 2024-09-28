@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+
 public class MainMenuManager : MonoBehaviour
 {
     [Header("Panels.....")]
@@ -18,27 +19,24 @@ public class MainMenuManager : MonoBehaviour
     
     void Start()
     {
-      ///  Cursor.visible = true;
-       /// Cursor.lockState = CursorLockMode.Locked;
-        
+        /// Cursor.visible = true;
+        /// Cursor.lockState = CursorLockMode.Locked;
         
         StartBtn.onClick.AddListener(OnStartClicked);
         SettingsMenu.onClick.AddListener(OpenSettingsPanel);
         Back.onClick.AddListener(BackToMainMenu);
-        
+        QuitBtn.onClick.AddListener(Quit);
        
         MainMenuPanel.SetActive(true);
         SettingsPanel.SetActive(false);
         ExitPanel.SetActive(false);
     }
-
    
     void OnStartClicked()
     {
         Debug.Log("Start Game");
         SceneManager.LoadScene("Play"); 
     }
-
 
     void OpenSettingsPanel()
     {
@@ -48,7 +46,6 @@ public class MainMenuManager : MonoBehaviour
     void BackToMainMenu()
     {
         ExitPanel.SetActive(true);
-       
     }
 
     void Quit()

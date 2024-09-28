@@ -750,10 +750,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2117827409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 749.9709, y: 187.4927}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -60.00001, y: -440}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &589984546
 MonoBehaviour:
@@ -775,10 +775,37 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings Menu
+  m_text: 'Sajjad Chandio: Team Lead, Bodycam View, Sprinting, Map/Appartment, Interactables,
+    Character Model, Bathtub Model, Torch, Switch Model, Old TV Model, Door model,
+    Door Opening, Bed Model, Chair Model, Fridge Model, Bulb Model, Wall Painting
+    Model, Side Table Model, Wall Lamp Model, Table Lamp, Color Map, Old Oven Model,
+    Kitchen Cabinet Model, Old Style Carpet Model, Interaction Guide on UI, UI Feedback,
+    Key Model, Collectibles, Inventory System, Eye opening, Ghost AI, Lamps/Lights
+    Interaction, Main Menu, Claustrophobia Mechanic, Sleep Mechanic, Toilet Model,
+    Glass Model, Dining Table Model, Plate Model, Sink Model, Level Textures, Level
+    Design, Bowl Model, Cup Model, Wall Cupboard Model, Player screams when sees
+    ghost, Darker Area Trigger, T-Shirt, Words written on wall, blood texture
+
+
+    Bilal
+    Cheema: Player Head Bobbing, Crosshair, Table Model, Player Footsteps SFX, TV
+    Static SFX, Fixed Door Interactor, New Input System, Credits
+
+
+    Shehriyar:
+    Main Menu Sequence, Pause Panel, Gane Over Panel, Game Win Panel, UI Bug Fixes
+
+
+    Urooj
+    Iqbal: Game Logo, Background Music Variations, Knock SFX, Death BG Music, Dark
+    Music, Phone Ring SFX, Story Draft
+
+
+    Collaboratively developed in SAATH GameDev
+    (Alpha)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6994d6197bb74b46b62a16da60ab144, type: 2}
-  m_sharedMaterial: {fileID: -76956038192448685, guid: a6994d6197bb74b46b62a16da60ab144, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -802,13 +829,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 178.2
-  m_fontSizeBase: 178.2
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2211,7 +2238,7 @@ GameObject:
   - component: {fileID: 1762868520}
   - component: {fileID: 1762868519}
   m_Layer: 0
-  m_Name: Settings
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2512,7 +2539,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6994d6197bb74b46b62a16da60ab144, type: 2}
   m_sharedMaterial: {fileID: -76956038192448685, guid: a6994d6197bb74b46b62a16da60ab144, type: 2}
@@ -2603,7 +2630,7 @@ GameObject:
   - component: {fileID: 2117827411}
   - component: {fileID: 2117827410}
   m_Layer: 0
-  m_Name: Settings
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

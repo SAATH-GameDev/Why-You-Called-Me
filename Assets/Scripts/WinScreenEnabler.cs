@@ -24,6 +24,9 @@ public class WinScreenEnabler : MonoBehaviour
             // Enable the panel when the player enters the trigger
             if (panel != null)
             {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                
                 panel.SetActive(true);
             }
         }
